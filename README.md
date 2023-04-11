@@ -11,7 +11,8 @@ Local storage is a place in the browser that can be used to store data and the d
 Clone this project
 
 ```bash
-  git clone
+  git clone git@github.com:sugiartofahmi/react-todo.git
+  cd react-todo
 ```
 
 Install with npm
