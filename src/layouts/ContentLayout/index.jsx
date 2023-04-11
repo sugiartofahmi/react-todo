@@ -1,8 +1,8 @@
 const ContentLayout = ({ children }) => {
   return (
-    <main className="flex flex-col w-full min-h-screen justify-center items-center">
+    <section className="h-[70vh] w-full overflow-auto scrollbar-hide ">
       {children}
-    </main>
+    </section>
   );
 };
 
