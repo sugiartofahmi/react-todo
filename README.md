@@ -4,7 +4,7 @@ Local storage is a place in the browser that can be used to store data and the d
 
 ## Tech Stack
 
-**Client:** React, TailwindCSS
+**Client:** Vite, React, TailwindCSS
 
 ## Installation
 
@@ -15,16 +15,16 @@ Clone this project
   cd react-todo
 ```
 
-Install with npm
-
-```bash
-  npm install
-```
-
-Install with yarn
+Install Dependencie
 
 ```bash
   yarn
+```
+
+Start project
+
+```bash
+  yarn dev
 ```
 
 ## Demo
