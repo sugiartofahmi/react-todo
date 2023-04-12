@@ -1,9 +1,12 @@
 import MainLayout from "./layouts/MainLayout";
 import BaseLayout from "./layouts/BaseLayout";
 import ContentLayout from "./layouts/ContentLayout";
-import { TiDeleteOutline } from "react-icons/ti";
-import { BiEdit } from "react-icons/bi";
 import { useEffect, useState } from "react";
+import InputField from "./components/InputField";
+import ButtonTodo from "./components/Button/ButtonTodo";
+import ButtonDelete from "./components/Button/ButtonDelete";
+import ButtonUpdate from "./components/Button/ButtonUpdate";
+import { v4 as uuidv4 } from "uuid";
 const App = () => {
   document.title = "Todo List";
   const [todo, setTodo] = useState("");
@@ -45,7 +48,7 @@ const App = () => {
       setTodos((prev) => [
         ...prev,
         {
-          id: Math.floor(Math.random() * 100),
+          id: new Date().getTime(),
           todo: todo,
           completed: false,
         },
@@ -60,21 +63,19 @@ const App = () => {
       <BaseLayout>
         <h1 className="self-center  text-2xl">Todo List</h1>
         <section className="flex flex-row items-center justify-between w-full bg-gradient-to-r from-green-400 to-blue-500 p-[4px]  rounded-lg  ">
-          <input
+          <InputField
             onKeyUp={(e) =>
               e.key == "Enter" && (isUpdate ? updateTodo() : addTodo(todo))
             }
             onChange={(e) => setTodo(e.target.value)}
             value={todo}
-            className=" capitalize rounded-l-lg flex p-2 bg-[#171926] items-center w-3/4 outline-none"
-            type="text"
           />
-          <button
+
+          <ButtonTodo
             onClick={() => (isUpdate ? updateTodo() : addTodo(todo))}
-            className=" h-full w-1/4 rounded-r-lg "
-          >
-            {isUpdate ? `Update Todo` : `Add Todo`}
-          </button>
+            style=" h-full w-1/4 rounded-r-lg "
+            text={isUpdate ? `Update Todo` : `Add Todo`}
+          />
         </section>
         <ContentLayout>
           <ul className="gap-y-2 flex flex-col">
@@ -101,13 +102,13 @@ const App = () => {
                     </span>
                   </section>
                   <section className="flex flex-row gap-2">
-                    <TiDeleteOutline
+                    <ButtonDelete
                       onClick={() => deleteTodo(el.id)}
                       className="cursor-pointer"
                       size={30}
                     />
                     {!el.completed && (
-                      <BiEdit
+                      <ButtonUpdate
                         onClick={() => getTodo(el)}
                         className="cursor-pointer"
                         size={27}
