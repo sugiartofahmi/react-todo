@@ -3,14 +3,21 @@ import BaseLayout from "./layouts/BaseLayout";
 import ContentLayout from "./layouts/ContentLayout";
 import { TiDeleteOutline } from "react-icons/ti";
 import { BiEdit } from "react-icons/bi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const App = () => {
   document.title = "Todo List";
   const [todo, setTodo] = useState("");
   const [id, setId] = useState("");
   const [isUpdate, setIsUpdate] = useState(false);
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() =>
+    localStorage.getItem("TODO") == null
+      ? []
+      : JSON.parse(localStorage.getItem("TODO"))
+  );
 
+  useEffect(() => {
+    localStorage.setItem("TODO", JSON.stringify(todos));
+  }, [todos]);
   const updateTodo = () => {
     setTodos((prev) => [
       ...prev.filter((el) => el.id != id),
