@@ -61,7 +61,9 @@ const App = () => {
         <h1 className="self-center  text-2xl">Todo List</h1>
         <section className="flex flex-row items-center justify-between w-full bg-gradient-to-r from-green-400 to-blue-500 p-[4px]  rounded-lg  ">
           <input
-            onKeyUp={(e) => e.key == "Enter" && addTodo(todo)}
+            onKeyUp={(e) =>
+              e.key == "Enter" && isUpdate ? updateTodo() : addTodo(todo)
+            }
             onChange={(e) => setTodo(e.target.value)}
             value={todo}
             className=" capitalize rounded-l-lg flex p-2 bg-[#171926] items-center w-3/4 outline-none"
