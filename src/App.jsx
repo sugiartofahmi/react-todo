@@ -62,7 +62,7 @@ const App = () => {
         <section className="flex flex-row items-center justify-between w-full bg-gradient-to-r from-green-400 to-blue-500 p-[4px]  rounded-lg  ">
           <input
             onKeyUp={(e) =>
-              e.key == "Enter" && isUpdate ? updateTodo() : addTodo(todo)
+              e.key == "Enter" && (isUpdate ? updateTodo() : addTodo(todo))
             }
             onChange={(e) => setTodo(e.target.value)}
             value={todo}
